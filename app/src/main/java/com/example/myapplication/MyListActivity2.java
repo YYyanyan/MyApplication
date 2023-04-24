@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -43,7 +44,6 @@ public class MyListActivity2 extends ListActivity implements AdapterView.OnItemC
 //                            new int[] {R.id.itemTitle,R.id.price});
                     MyAdapter adapter = new MyAdapter(MyListActivity2.this,R.layout.list_item,listItems);
                     setListAdapter(adapter);
-                    getListView().setOnItemClickListener(MyListActivity2.this);
                 }
                 super.handleMessage(msg);
 
@@ -52,6 +52,8 @@ public class MyListActivity2 extends ListActivity implements AdapterView.OnItemC
         //启动线程
         Thread thread = new Thread(new MyTask(handler));
         thread.start();
+
+        getListView().setOnItemClickListener(MyListActivity2.this);
 
     }
 
@@ -62,6 +64,16 @@ public class MyListActivity2 extends ListActivity implements AdapterView.OnItemC
         String price = map.get("Price");
         Log.i(TAG, "onItemClick: Title = " + title);
         Log.i(TAG, "onItemClick: Pirce = " + price);
+
+        //打开新窗口
+        Intent calActivity = new Intent(this,CalRMBActivity.class);
+        calActivity.putExtra("Currency", title);
+        calActivity.putExtra("Price", price);
+        Log.i(TAG, "onItemClick: Currency :" + title);
+        Log.i(TAG, "onItemClick: Price : "+ price);
+
+        //startActivity(configActivity);
+        startActivity(calActivity);
 
     }
 }

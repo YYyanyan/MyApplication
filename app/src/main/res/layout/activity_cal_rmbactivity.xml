@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CalRMBActivity"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/currency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="48dp"
+        android:gravity="center_horizontal"
+        android:text="Hello"
+
+        />
+    <EditText
+        android:id="@+id/inputRMB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/inputHint"
+        android:layout_marginHorizontal="20dp"
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+
+        />
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calbnt"
+        android:layout_marginHorizontal="20dp"
+        android:onClick="click"
+        />
+
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MyAdapter extends ArrayAdapter {
-
+    private static final String TAG = "MyAdapter";
     public MyAdapter(@NonNull Context context, int resource, @NonNull ArrayList<HashMap<String, String>> list) {
         super(context, resource, list);
 
@@ -27,17 +28,19 @@ public class MyAdapter extends ArrayAdapter {
             if (itemView == null) {
                 itemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,
                         parent, false);
+            }
+
                 Map<String, String> map = (Map<String, String>) getItem(position);
                 TextView title = itemView.findViewById(R.id.itemTitle);
                 TextView price = itemView.findViewById(R.id.price);
 
-                title.setText("币种:" + map.get("Currency"));
-                price.setText("价格:" + map.get("Price"));
+                title.setText(map.get("Currency"));
+                price.setText(map.get("Price"));
+                Log.i(TAG, "getView: title = " + title);
+                Log.i(TAG, "getView: price = " + price);
 
 
-            }
-
-            return itemView;
+                return itemView;
         }
     }
 
